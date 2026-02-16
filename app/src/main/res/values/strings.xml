@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Coffe App</string>
+    <string name="fall_in_love_with_coffee_in_blissful_delight">Fall in Love with Coffee in Blissful Delight!</string>
+    <string name="welcome_to_our_cozy_coffee_corner_where_every_cup_is_a_delight_for_you">Welcome to our cozy coffee corner, where every cup is a delight for you.</string>
+    <string name="get_started">Get Started</string>
 </resources>
