@@ -29,7 +29,9 @@ import androidx.compose.ui.unit.sp
 import com.example.coffeapp.screens.ui_components.MyBottomNavBar
 import com.example.coffeapp.screens.ui_components.MySearchBar
 import com.example.coffeapp.R
+import com.example.coffeapp.model.Product
 import com.example.coffeapp.screens.ui_components.HomeScreenCategories
+import com.example.coffeapp.screens.ui_components.ProductsGrid
 
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -65,43 +67,60 @@ fun HomeScreen() {
                 .padding(innerPadding)
         ) {
 
-            Text(
-                text = "Location",
-                color = Color.Gray,
-                fontSize = 16.sp
-            )
+            //Displaying Products
+            val products = listOf(
 
-            Spacer(modifier = Modifier.height(4.dp))
+                Product(1, "Espresso", "Strong and rich", 3.80, R.drawable.coffee_2),
+                Product(2, "Latte", "Smooth and creamy", 4.50, R.drawable.coffee_3),
+                Product(3, "Cappuccino", "With chocolate", 4.20, R.drawable.coffee_1),
+                Product(4, "Mocha", "With cocoa flavor", 4.70, R.drawable.coffee_4),
+                Product(5, "Macchiato", "Bold and milky", 4.60, R.drawable.coffee_5),
+                Product(6, "Flat White", "Velvety smooth", 4.40, R.drawable.coffee_6),
+                Product(7, "Iced Mocha", "Refreshing and rich", 4.70, R.drawable.coffee_4),
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    location,
-                    color = Color.White,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 16.sp)
-
-                Icon(imageVector = Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Change Location",
-                    tint = Color.White
                 )
+
+            ProductsGrid(products) {
+                Text(
+                    text = "Location",
+                    color = Color.Gray,
+                    fontSize = 16.sp
+                )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        location,
+                        color = Color.White,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 16.sp
+                    )
+
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowDown,
+                        contentDescription = "Change Location",
+                        tint = Color.White
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(30.dp))
+
+                MySearchBar()
+
+                Spacer(modifier = Modifier.height(40.dp))
+
+                Image(
+                    painter = painterResource(R.drawable.banner_1),
+                    contentDescription = "Home Banner"
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                HomeScreenCategories()
             }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            MySearchBar()
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Image(
-                painter = painterResource(R.drawable.banner_1),
-                contentDescription = "Home Banner"
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            HomeScreenCategories()
 
         }
     }
