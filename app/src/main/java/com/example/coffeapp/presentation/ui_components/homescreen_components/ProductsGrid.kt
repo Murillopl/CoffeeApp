@@ -1,4 +1,4 @@
-package com.example.coffeapp.screens.ui_components
+package com.example.coffeapp.presentation.ui_components.homescreen_components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,12 +10,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.coffeapp.model.Product
+import androidx.navigation.NavController
+import com.example.coffeapp.domain.model.Product
 
 @Composable
 fun ProductsGrid(
     products: List<Product>,
-    topContent: @Composable () -> Unit
+    navController: NavController
 ) {
 
     LazyColumn(
@@ -24,9 +25,6 @@ fun ProductsGrid(
             .padding(8.dp)
     ) {
 
-        item {
-            topContent()
-        }
 
         items(products.chunked(2)) { rowItems ->
 
@@ -37,14 +35,16 @@ fun ProductsGrid(
                 ProductCard(
                     product = rowItems[0],
                     modifier = Modifier
-                        .weight(1f)
+                        .weight(1f),
+                    navController = navController
                 )
 
                 if ( rowItems.size == 2 ) {
                     ProductCard(
                         product = rowItems[1],
                         modifier = Modifier
-                            .weight(1f)
+                            .weight(1f),
+                        navController = navController
                     )
                 } else {
                     Spacer(modifier = Modifier.weight(1f))

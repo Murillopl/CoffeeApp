@@ -1,7 +1,8 @@
-package com.example.coffeapp.screens.ui_components
+package com.example.coffeapp.presentation.ui_components.homescreen_components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,11 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -33,22 +32,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.coffeapp.R
-import com.example.coffeapp.model.Product
-import com.example.coffeapp.ui.theme.IvoryWhite
-import com.example.coffeapp.ui.theme.LightBrown
-import com.example.coffeapp.ui.theme.LightGray
+import com.example.coffeapp.domain.model.Product
+import com.example.coffeapp.presentation.navigation.Routes
+import com.example.coffeapp.presentation.theme.IvoryWhite
+import com.example.coffeapp.presentation.theme.LightBrown
+import com.example.coffeapp.presentation.theme.LightGray
 
 @Composable
 fun ProductCard(
     product: Product,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
 
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(8.dp)
+            .clickable {
+                navController.navigate(Routes.DetailsScreen(product.id))
+            },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = LightGray

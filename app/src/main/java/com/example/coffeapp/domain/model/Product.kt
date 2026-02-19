@@ -1,4 +1,4 @@
-package com.example.coffeapp.model
+package com.example.coffeapp.domain.model
 
 data class Product(
     val id: Int,

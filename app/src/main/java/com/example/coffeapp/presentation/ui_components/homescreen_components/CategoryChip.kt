@@ -1,4 +1,4 @@
-package com.example.coffeapp.screens.ui_components
+package com.example.coffeapp.presentation.ui_components.homescreen_components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,8 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.coffeapp.ui.theme.LightBrown
-import com.example.coffeapp.ui.theme.LightGray
+import com.example.coffeapp.presentation.theme.LightBrown
+import com.example.coffeapp.presentation.theme.LightGray
 
 @Composable
 fun CategoryChip(

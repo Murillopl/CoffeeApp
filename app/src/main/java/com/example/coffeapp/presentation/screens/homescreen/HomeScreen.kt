@@ -1,4 +1,4 @@
-package com.example.coffeapp.screens.homescreen
+package com.example.coffeapp.presentation.screens.homescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,17 +26,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.coffeapp.screens.ui_components.MyBottomNavBar
-import com.example.coffeapp.screens.ui_components.MySearchBar
+import androidx.navigation.NavController
+import com.example.coffeapp.presentation.ui_components.homescreen_components.MyBottomNavBar
+import com.example.coffeapp.presentation.ui_components.homescreen_components.MySearchBar
 import com.example.coffeapp.R
-import com.example.coffeapp.model.Product
-import com.example.coffeapp.screens.ui_components.HomeScreenCategories
-import com.example.coffeapp.screens.ui_components.ProductsGrid
+import com.example.coffeapp.domain.model.Product
+import com.example.coffeapp.presentation.ui_components.homescreen_components.HomeScreenCategories
+import com.example.coffeapp.presentation.ui_components.homescreen_components.ProductsGrid
 
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
 
     val location = "Bangalore, India"
 
@@ -80,7 +80,9 @@ fun HomeScreen() {
 
                 )
 
-            ProductsGrid(products) {
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Column() {
                 Text(
                     text = "Location",
                     color = Color.Gray,
@@ -120,6 +122,8 @@ fun HomeScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 HomeScreenCategories()
+
+                ProductsGrid(products = products, navController = navController)
             }
 
         }
