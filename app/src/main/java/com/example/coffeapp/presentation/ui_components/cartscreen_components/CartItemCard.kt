@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -31,22 +30,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.coffeapp.R
+import com.example.coffeapp.domain.model.Product
 import com.example.coffeapp.presentation.theme.LightBrown
+import com.example.coffeapp.presentation.theme.LightGray
 
-@Preview
 @Composable
-fun CartItemCard() {
+fun CartItemCard(product: Product) {
 
     var quantity by remember { mutableStateOf(1) }
 
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
+            containerColor = LightGray,
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 4.dp
         )
     ) {
 
@@ -58,7 +60,7 @@ fun CartItemCard() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(R.drawable.coffee_3),
+                painter = painterResource(id = product.imageRes),
                 contentDescription = "Coffee Image",
                 modifier = Modifier
                     .size(70.dp)
@@ -71,14 +73,14 @@ fun CartItemCard() {
                     .padding(start = 12.dp)
             ) {
                 Text(
-                    text = "Coffee Name",
+                    text = product.name,
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.SemiBold
                     )
                 )
 
                 Text(
-                    text = "Coffee Description",
+                    text = product.description,
                     style = MaterialTheme.typography.bodySmall.copy(
                         color = Color.DarkGray
                     )
