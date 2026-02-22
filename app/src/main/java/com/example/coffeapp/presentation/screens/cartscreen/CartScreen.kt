@@ -45,7 +45,7 @@ fun CartScreen(navController: NavController) {
 
 
     Scaffold(
-        topBar = { CartScreenTopAppBar(navController) },
+        topBar = { CartScreenTopAppBar() },
         bottomBar = { MyBottomNavBar(navController, "Cart") }
     ) { innerPadding ->
 
